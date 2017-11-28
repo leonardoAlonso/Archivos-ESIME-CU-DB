@@ -272,7 +272,7 @@ public class LoginRegister extends javax.swing.JFrame {
         btn_min.setBackground(new java.awt.Color(34, 49, 63));
         btn_min.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         btn_min.setForeground(new java.awt.Color(255, 255, 255));
-        btn_min.setText("   __  ");
+        btn_min.setText("  __  ");
         btn_min.setBorder(null);
         btn_min.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -298,7 +298,7 @@ public class LoginRegister extends javax.swing.JFrame {
                         .addGap(26, 26, 26)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(0, 268, Short.MAX_VALUE)
+                                .addGap(0, 272, Short.MAX_VALUE)
                                 .addComponent(btn_min)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btn_exit))
