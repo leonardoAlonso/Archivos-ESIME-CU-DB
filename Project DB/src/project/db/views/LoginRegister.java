@@ -7,7 +7,7 @@ package project.db.views;
 
 import java.awt.Color;
 import project.db.model.ConnectionOracle;
-
+import project.db.views.MainFrame;
 /**
  *
  * @author Leonardo
@@ -438,6 +438,11 @@ public class LoginRegister extends javax.swing.JFrame {
         // TODO add your handling code here:
         ConnectionOracle con = new ConnectionOracle();
         con.conect();
+        
+       MainFrame main = new MainFrame();
+       main.setVisible(true);
+       main.setLocationRelativeTo(null);
+       this.setVisible(false);
        
     }//GEN-LAST:event_jButton1ActionPerformed
 
