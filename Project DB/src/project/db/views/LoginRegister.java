@@ -133,6 +133,7 @@ public class LoginRegister extends javax.swing.JFrame {
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Login");
         jButton1.setBorder(null);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -249,6 +250,7 @@ public class LoginRegister extends javax.swing.JFrame {
         SignUp.setForeground(new java.awt.Color(255, 255, 255));
         SignUp.setText("SignUp");
         SignUp.setBorder(null);
+        SignUp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btn_exit.setBackground(new java.awt.Color(34, 49, 63));
         btn_exit.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
