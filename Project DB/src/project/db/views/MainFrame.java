@@ -33,6 +33,18 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
+        txt_nombre = new javax.swing.JTextField();
+        jSeparator2 = new javax.swing.JSeparator();
+        txt_ape_pat = new javax.swing.JTextField();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
+        txt_ape_ma = new javax.swing.JTextField();
+        jSeparator5 = new javax.swing.JSeparator();
+        txt_average = new javax.swing.JTextField();
+        jSeparator6 = new javax.swing.JSeparator();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        combo_pay = new javax.swing.JComboBox();
+        combo_cobro = new javax.swing.JComboBox();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -85,6 +97,52 @@ public class MainFrame extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(236, 240, 241));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txt_nombre.setBackground(new java.awt.Color(236, 240, 241));
+        txt_nombre.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txt_nombre.setText("First Name");
+        txt_nombre.setBorder(null);
+        jPanel3.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 160, -1));
+        jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 160, -1));
+
+        txt_ape_pat.setBackground(new java.awt.Color(236, 240, 241));
+        txt_ape_pat.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txt_ape_pat.setText("Last Name");
+        txt_ape_pat.setBorder(null);
+        jPanel3.add(txt_ape_pat, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 160, -1));
+        jPanel3.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 160, -1));
+        jPanel3.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 160, -1));
+
+        txt_ape_ma.setBackground(new java.awt.Color(236, 240, 241));
+        txt_ape_ma.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txt_ape_ma.setText("Average");
+        txt_ape_ma.setBorder(null);
+        jPanel3.add(txt_ape_ma, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 160, -1));
+        jPanel3.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 160, -1));
+
+        txt_average.setBackground(new java.awt.Color(236, 240, 241));
+        txt_average.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txt_average.setText("Email");
+        txt_average.setBorder(null);
+        jPanel3.add(txt_average, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 160, -1));
+        jPanel3.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 50, 160, -1));
+
+        jPasswordField1.setBackground(new java.awt.Color(236, 240, 241));
+        jPasswordField1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jPasswordField1.setText("jPasswordField1");
+        jPasswordField1.setBorder(null);
+        jPanel3.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, 160, -1));
+
+        combo_pay.setBackground(new java.awt.Color(236, 240, 241));
+        combo_pay.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        combo_pay.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Metodo de pago", "Debito", "Credito", "Pay Pal", "Depostito" }));
+        jPanel3.add(combo_pay, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 70, 160, -1));
+
+        combo_cobro.setBackground(new java.awt.Color(236, 240, 241));
+        combo_cobro.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        combo_cobro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Metodo de cobro", "Debito", "Credito", "Pay Pal", "Depostito" }));
+        jPanel3.add(combo_cobro, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, 160, -1));
+
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 720, 160));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -126,6 +184,8 @@ public class MainFrame extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox combo_cobro;
+    private javax.swing.JComboBox combo_pay;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -137,7 +197,17 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txt_ape_ma;
+    private javax.swing.JTextField txt_ape_pat;
+    private javax.swing.JTextField txt_average;
+    private javax.swing.JTextField txt_nombre;
     // End of variables declaration//GEN-END:variables
 }
