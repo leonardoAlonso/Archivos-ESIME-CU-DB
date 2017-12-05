@@ -49,13 +49,14 @@ public class MainFrame extends javax.swing.JFrame {
         jPasswordField1 = new javax.swing.JPasswordField();
         combo_pay = new javax.swing.JComboBox();
         combo_cobro = new javax.swing.JComboBox();
+        btn_update = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jTextField1 = new javax.swing.JTextField();
-        label_user = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        label_user = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -140,12 +141,18 @@ public class MainFrame extends javax.swing.JFrame {
         combo_pay.setBackground(new java.awt.Color(236, 240, 241));
         combo_pay.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         combo_pay.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Metodo de pago", "Debito", "Credito", "Pay Pal", "Depostito" }));
-        jPanel3.add(combo_pay, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 70, 160, -1));
+        jPanel3.add(combo_pay, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 60, 160, -1));
 
         combo_cobro.setBackground(new java.awt.Color(236, 240, 241));
         combo_cobro.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         combo_cobro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Metodo de cobro", "Debito", "Credito", "Pay Pal", "Depostito" }));
-        jPanel3.add(combo_cobro, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, 160, -1));
+        jPanel3.add(combo_cobro, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 160, -1));
+
+        btn_update.setBackground(new java.awt.Color(34, 49, 63));
+        btn_update.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btn_update.setText("Update");
+        btn_update.setBorder(null);
+        jPanel3.add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, 160, -1));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 720, 160));
 
@@ -161,10 +168,6 @@ public class MainFrame extends javax.swing.JFrame {
         jTextField1.setBorder(null);
         jPanel4.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 310, 20));
 
-        label_user.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        label_user.setText("User");
-        jPanel4.add(label_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, -1, -1));
-
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Male_User_32px.png"))); // NOI18N
         jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, -1, -1));
 
@@ -174,7 +177,11 @@ public class MainFrame extends javax.swing.JFrame {
                 jLabel8MouseClicked(evt);
             }
         });
-        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 30, -1, -1));
+        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 0, -1, -1));
+
+        label_user.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        label_user.setText("User");
+        jPanel4.add(label_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, -1, -1));
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, 720, 70));
 
@@ -188,6 +195,7 @@ public class MainFrame extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_update;
     private javax.swing.JComboBox combo_cobro;
     private javax.swing.JComboBox combo_pay;
     private javax.swing.JLabel jLabel2;
