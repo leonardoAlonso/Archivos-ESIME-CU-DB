@@ -62,5 +62,82 @@ public class Controller {
         }
         return user;
     }
+    
+    public String getLastName(){
+        String last_name = null;
+        ConnectionOracle con = new ConnectionOracle();
+        con.conect();
+        Statement st = null;
+        String query = "SELECT APELLIDO_P_ALUMNO FROM ALUMNO WHERE USUARIO_IDUSUARIO LIKE " + user_id;
+        ResultSet rs;
+        try{
+            st = con.conex.createStatement();
+            rs = st.executeQuery(query);
+            while(rs.next()){
+               last_name = rs.getString("APELLIDO_P_ALUMNO");
+            }
+            con.disconect();
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        return last_name;
+    }
+    public double getAverage(){
+        double average = 0.0;
+        ConnectionOracle con = new ConnectionOracle();
+        con.conect();
+        Statement st = null;
+        String query = "SELECT PROMEDIO FROM ALUMNO WHERE USUARIO_IDUSUARIO LIKE " + user_id;
+        ResultSet rs;
+        try{
+            st = con.conex.createStatement();
+            rs = st.executeQuery(query);
+            while(rs.next()){
+               average = rs.getDouble("PROMEDIO");
+            }
+            con.disconect();
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        return average;
+    }
+    public String getPassword(){
+        String password = null;
+        ConnectionOracle con = new ConnectionOracle();
+        con.conect();
+        Statement st = null;
+        String query = "SELECT PASSWORD FROM USUARIO WHERE IDUSUARIO LIKE " + user_id;
+        ResultSet rs;
+        try{
+            st = con.conex.createStatement();
+            rs = st.executeQuery(query);
+            while(rs.next()){
+               password = rs.getString("PASSWORD");
+            }
+            con.disconect();
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        return password;
+    }
+    public String getMail(){
+        String mail = null;
+        ConnectionOracle con = new ConnectionOracle();
+        con.conect();
+        Statement st = null;
+        String query = "SELECT CORREO FROM USUARIO WHERE IDUSUARIO LIKE " + user_id;
+        ResultSet rs;
+        try{
+            st = con.conex.createStatement();
+            rs = st.executeQuery(query);
+            while(rs.next()){
+               mail = rs.getString("CORREO");
+            }
+            con.disconect();
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        return mail;
+    }
        
 }

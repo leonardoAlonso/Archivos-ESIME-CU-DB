@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package project.db.views;
+import projectdb.controller.Controller;
 
 /**
  *
@@ -16,10 +17,24 @@ public class MainFrame extends javax.swing.JFrame {
      */
     
     String user;
-    public MainFrame(String user) {
+    String last_name;
+    String mail;
+    String password;
+    double promedio;
+    Controller con = null;
+    public MainFrame(String user, String last_name, double promedio, String correo, String password) {
         initComponents();
         this.user = user;
+        this.last_name = last_name;
+        this.promedio = promedio;
+        this.mail = correo;
+        this.password = password;
         label_user.setText(user);
+        txt_nombre.setText(user);
+        txt_ape_pat.setText(last_name);
+        txt_promedio.setText(String.valueOf(promedio));
+        txt_mail.setText(correo);
+        txt_pass.setText(password);
     }
 
     /**
@@ -42,11 +57,11 @@ public class MainFrame extends javax.swing.JFrame {
         txt_ape_pat = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
-        txt_ape_ma = new javax.swing.JTextField();
+        txt_promedio = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
-        txt_average = new javax.swing.JTextField();
+        txt_mail = new javax.swing.JTextField();
         jSeparator6 = new javax.swing.JSeparator();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        txt_pass = new javax.swing.JPasswordField();
         combo_pay = new javax.swing.JComboBox();
         combo_cobro = new javax.swing.JComboBox();
         btn_update = new javax.swing.JButton();
@@ -107,6 +122,11 @@ public class MainFrame extends javax.swing.JFrame {
         txt_nombre.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txt_nombre.setText("First Name");
         txt_nombre.setBorder(null);
+        txt_nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_nombreActionPerformed(evt);
+            }
+        });
         jPanel3.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 160, -1));
         jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 160, -1));
 
@@ -118,25 +138,25 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel3.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 160, -1));
         jPanel3.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 160, -1));
 
-        txt_ape_ma.setBackground(new java.awt.Color(236, 240, 241));
-        txt_ape_ma.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txt_ape_ma.setText("Average");
-        txt_ape_ma.setBorder(null);
-        jPanel3.add(txt_ape_ma, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 160, -1));
+        txt_promedio.setBackground(new java.awt.Color(236, 240, 241));
+        txt_promedio.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txt_promedio.setText("Average");
+        txt_promedio.setBorder(null);
+        jPanel3.add(txt_promedio, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 160, -1));
         jPanel3.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 160, -1));
 
-        txt_average.setBackground(new java.awt.Color(236, 240, 241));
-        txt_average.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txt_average.setText("Email");
-        txt_average.setBorder(null);
-        jPanel3.add(txt_average, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 160, -1));
+        txt_mail.setBackground(new java.awt.Color(236, 240, 241));
+        txt_mail.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txt_mail.setText("Email");
+        txt_mail.setBorder(null);
+        jPanel3.add(txt_mail, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 160, -1));
         jPanel3.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 50, 160, -1));
 
-        jPasswordField1.setBackground(new java.awt.Color(236, 240, 241));
-        jPasswordField1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jPasswordField1.setText("jPasswordField1");
-        jPasswordField1.setBorder(null);
-        jPanel3.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, 160, -1));
+        txt_pass.setBackground(new java.awt.Color(236, 240, 241));
+        txt_pass.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txt_pass.setText("jPasswordField1");
+        txt_pass.setBorder(null);
+        jPanel3.add(txt_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, 160, -1));
 
         combo_pay.setBackground(new java.awt.Color(236, 240, 241));
         combo_pay.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
@@ -150,6 +170,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         btn_update.setBackground(new java.awt.Color(34, 49, 63));
         btn_update.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btn_update.setForeground(new java.awt.Color(255, 255, 255));
         btn_update.setText("Update");
         btn_update.setBorder(null);
         jPanel3.add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, 160, -1));
@@ -193,6 +214,10 @@ public class MainFrame extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jLabel8MouseClicked
 
+    private void txt_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_nombreActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_update;
@@ -208,7 +233,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -217,9 +241,10 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel label_user;
-    private javax.swing.JTextField txt_ape_ma;
     private javax.swing.JTextField txt_ape_pat;
-    private javax.swing.JTextField txt_average;
+    private javax.swing.JTextField txt_mail;
     private javax.swing.JTextField txt_nombre;
+    private javax.swing.JPasswordField txt_pass;
+    private javax.swing.JTextField txt_promedio;
     // End of variables declaration//GEN-END:variables
 }

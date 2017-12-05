@@ -444,9 +444,17 @@ public class LoginRegister extends javax.swing.JFrame {
         String user = mail_login.getText();
         String pass = new String(pass_login.getPassword());
         String nombre_user = null;
+        String last_name = null;
+        String password = null;
+        String correo = null;
+        double promedio = 0.0;
         if(con.login(user, pass)){
             nombre_user = con.getUser();
-            MainFrame main = new MainFrame(nombre_user);
+            last_name = con.getLastName();
+            promedio = con.getAverage();
+            correo = con.getMail();
+            password = con.getPassword();
+            MainFrame main = new MainFrame(nombre_user,last_name, promedio, correo, password);
             main.setVisible(true);
             main.setLocationRelativeTo(null);
             this.setVisible(false);
