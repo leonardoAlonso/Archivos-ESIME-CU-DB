@@ -6,8 +6,10 @@
 package project.db.views;
 
 import java.awt.Color;
-import project.db.model.ConnectionOracle;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import project.db.views.MainFrame;
+import projectdb.controller.Controller;
 /**
  *
  * @author Leonardo
@@ -438,14 +440,17 @@ public class LoginRegister extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        ConnectionOracle con = new ConnectionOracle();
-        con.conect();
-        
-       MainFrame main = new MainFrame();
-       main.setVisible(true);
-       main.setLocationRelativeTo(null);
-       this.setVisible(false);
-       
+        Controller con = new Controller();
+        String user = mail_login.getText();
+        String pass = new String(pass_login.getPassword());
+        String nombre_user = null;
+        if(con.login(user, pass)){
+            nombre_user = con.getUser();
+            MainFrame main = new MainFrame(nombre_user);
+            main.setVisible(true);
+            main.setLocationRelativeTo(null);
+            this.setVisible(false);
+        }       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btn_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exitActionPerformed

@@ -13,19 +13,17 @@ import javax.swing.JOptionPane;
  * @author Leonardo
  */
 public class ConnectionOracle {
-    String user;
-    String password;
-    String url;
-    Connection conex;
+    private final String user;
+    private final String password;
+    private final String url;
+    public Connection conex;
     //UIManager UI=new UIManager();
     
-    Statement stm;
     public ConnectionOracle(){
         user = "leonardo_alonso"; // cambair por su usuario
         password = "aea4f8261e"; // cambiar por su contraseña
         url = "jdbc:oracle:thin:@localhost:1521:XE";
         conex = null;
-        stm = null;
     }
     public void conect(){
         try{
@@ -33,7 +31,7 @@ public class ConnectionOracle {
             conex = DriverManager.getConnection(url,user,password); 
             //UI.put("OptionPane.background",new ColorUIResource(34,49,63));
             //UI.put("OptionPane.foreground", new ColorUIResource(255,255,255));
-            JOptionPane.showMessageDialog(null,"Conexion exitosa");
+            //JOptionPane.showMessageDialog(null,"Conexion exitosa");
         }catch(SQLException e){
            // UI.put("OptionPane.background",new ColorUIResource(255,0,0));
             JOptionPane.showMessageDialog(null,"Conexion fallida");
@@ -48,10 +46,14 @@ public class ConnectionOracle {
         }
     }
     
+    
+    
     /*Aun no funciona 
-    se debe crear un procedimiento almacenado en la base de datos para insertar alumnos
+    crear un procedimiento almacenado en la base de datos para insertar alumnos
     sobre el mismo insertar al usuario
     */
+    
+    
     /*
     public void insert_alumno(int ID, String name, String lastname, String age, String gender) {
         try {
