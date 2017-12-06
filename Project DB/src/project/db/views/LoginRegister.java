@@ -6,9 +6,6 @@
 package project.db.views;
 
 import java.awt.Color;
-import java.sql.SQLException;
-import javax.swing.JOptionPane;
-import project.db.views.MainFrame;
 import projectdb.controller.Controller;
 /**
  *

@@ -88,7 +88,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        label_upload = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -121,7 +121,13 @@ public class MainFrame extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Download_32px.png"))); // NOI18N
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Upload_32px.png"))); // NOI18N
+        label_upload.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Upload_32px.png"))); // NOI18N
+        label_upload.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        label_upload.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                label_uploadMouseClicked(evt);
+            }
+        });
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Todo_List_32px.png"))); // NOI18N
 
@@ -133,7 +139,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap(18, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(label_upload, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
@@ -143,7 +149,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5)
+                .addComponent(label_upload)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
                 .addContainerGap(340, Short.MAX_VALUE))
@@ -306,6 +312,13 @@ public class MainFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btn_updateActionPerformed
 
+    private void label_uploadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_uploadMouseClicked
+        // TODO add your handling code here:
+        Upload up  = new Upload();
+        up.setVisible(true);
+        up.setLocationRelativeTo(null);
+    }//GEN-LAST:event_label_uploadMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_update;
@@ -314,7 +327,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
@@ -328,6 +340,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel label_upload;
     private javax.swing.JLabel label_user;
     private javax.swing.JTextField txt_ape_pat;
     private javax.swing.JTextField txt_mail;
