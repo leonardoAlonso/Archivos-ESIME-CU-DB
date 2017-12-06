@@ -5,7 +5,7 @@
  */
 package projectdb.controller;
 
-import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.SQLException;
@@ -138,6 +138,35 @@ public class Controller {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
         return mail;
+    }
+    
+    public void updateUser(String user, String last_name, double promedio, int metodo_pago, int metodo_cobro, String correo, String password){
+        ConnectionOracle con = new ConnectionOracle();
+        con.conect();
+        String query = "UPDATE ALUMNO SET NOMBRE_ALUMNO = ?, "+
+                "APELLIDO_P_ALUMNO = ?, PROMEDIO = ?, PAGO_IDPAGO = ?,"+
+                "COBRO_IDCOBRO = ? WHERE USUARIO_IDUSUARIO LIKE  ?";
+        try{            
+            PreparedStatement st = con.conex.prepareStatement(query);
+            st.setString(1, user);
+            st.setString(2, last_name);
+            st.setDouble(3, promedio);
+            st.setInt(4, metodo_pago);
+            st.setInt(5, metodo_cobro);
+            st.setInt(6, user_id);
+            st.executeUpdate();
+            System.out.println("Actualizado 1");
+            /*
+            query = "UPDATE USUARIO SET CORREO = ?, PASSWORD = ? WHERE IDUSUARIO LIKE" + user_id;
+            st = con.conex.prepareStatement(query);
+            st.setString(1, correo);
+            st.setString(2, password);
+            st.executeUpdate();
+                    */
+            con.disconect();
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
     }
        
 }

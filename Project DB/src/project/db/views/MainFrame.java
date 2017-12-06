@@ -21,7 +21,47 @@ public class MainFrame extends javax.swing.JFrame {
     String mail;
     String password;
     double promedio;
-    Controller con = null;
+
+    public String getUser() {
+        return user;
+    }
+
+    public String getLast_name() {
+        return last_name;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public double getPromedio() {
+        return promedio;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setPromedio(double promedio) {
+        this.promedio = promedio;
+    }
+    
     public MainFrame(String user, String last_name, double promedio, String correo, String password) {
         initComponents();
         this.user = user;
@@ -173,7 +213,12 @@ public class MainFrame extends javax.swing.JFrame {
         btn_update.setForeground(new java.awt.Color(255, 255, 255));
         btn_update.setText("Update");
         btn_update.setBorder(null);
-        jPanel3.add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, 160, -1));
+        btn_update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_updateActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 120, 160, 30));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 720, 160));
 
@@ -217,6 +262,49 @@ public class MainFrame extends javax.swing.JFrame {
     private void txt_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_nombreActionPerformed
+
+    private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
+        // TODO add your handling code here:
+        Controller con = new Controller();
+        int metodo_pago = 0;
+        int metodo_cobro = 0;
+        switch (String.valueOf(combo_pay.getSelectedItem())) {
+            case "Debito":
+                metodo_pago = 1;
+                break;
+            case "Credito":
+                metodo_pago = 2;
+                break;
+            case "Pay Pal":
+                metodo_pago = 3;
+                break;
+            case "Deposito":
+                metodo_pago = 4;
+                break;
+            default:
+                metodo_pago = 0;
+        }
+         switch (String.valueOf(combo_cobro.getSelectedItem())) {
+            case "Debito":
+                metodo_cobro = 1;
+                break;
+            case "Credito":
+                metodo_cobro = 2;
+                break;
+            case "Pay Pal":
+                metodo_cobro = 3;
+                break;
+            case "Deposito":
+                metodo_cobro = 4;
+                break;
+            default:
+                metodo_cobro = 0;
+        }
+         System.out.println(txt_nombre.getText());
+         System.out.println(metodo_pago);
+        con.updateUser(txt_nombre.getText(), txt_ape_pat.getText(), Double.parseDouble(txt_promedio.getText()), metodo_pago, metodo_cobro, txt_mail.getText(), String.valueOf(txt_pass.getPassword()));
+        
+    }//GEN-LAST:event_btn_updateActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
