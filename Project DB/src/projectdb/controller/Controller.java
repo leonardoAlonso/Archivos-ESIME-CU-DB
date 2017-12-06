@@ -31,11 +31,14 @@ public class Controller {
         try{
             st = con.conex.createStatement();
             rs = st.executeQuery(query);
-            while(rs.next()){
+           if (rs.next()){
                 user_id = rs.getInt("IDUSUARIO");
-            }
-            activo = true; 
-            System.out.println("Inicio");
+                activo = true; 
+            }else{
+               activo = false;
+               JOptionPane.showMessageDialog(null, "Usuario o Contraseña erroneos");
+           }
+            //System.out.println("Inicio");
             con.disconect();
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, e.getMessage());
@@ -145,7 +148,7 @@ public class Controller {
         con.conect();
         String query = "UPDATE ALUMNO SET NOMBRE_ALUMNO = ?, "+
                 "APELLIDO_P_ALUMNO = ?, PROMEDIO = ?, PAGO_IDPAGO = ?,"+
-                "COBRO_IDCOBRO = ? WHERE USUARIO_IDUSUARIO LIKE  ?";
+                "COBRO_IDCOBRO = ? WHERE USUARIO_IDUSUARIO =  ?";
         try{            
             PreparedStatement st = con.conex.prepareStatement(query);
             st.setString(1, user);
@@ -156,14 +159,13 @@ public class Controller {
             st.setInt(6, user_id);
             st.executeUpdate();
             System.out.println("Actualizado 1");
-            /*
-            query = "UPDATE USUARIO SET CORREO = ?, PASSWORD = ? WHERE IDUSUARIO LIKE" + user_id;
+            query = "UPDATE USUARIO SET CORREO = ?, PASSWORD = ? WHERE IDUSUARIO =" + user_id;
             st = con.conex.prepareStatement(query);
             st.setString(1, correo);
             st.setString(2, password);
             st.executeUpdate();
-                    */
             con.disconect();
+            JOptionPane.showMessageDialog(null, "Datos actualizados");
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
