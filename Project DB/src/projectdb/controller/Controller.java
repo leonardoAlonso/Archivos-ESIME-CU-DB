@@ -5,10 +5,13 @@
  */
 package projectdb.controller;
 
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import project.db.model.ConnectionOracle;
 
@@ -56,7 +59,7 @@ public class Controller {
         try{
             st = con.conex.createStatement();
             rs = st.executeQuery(query);
-            while(rs.next()){
+            if(rs.next()){
                user = rs.getString("NOMBRE_ALUMNO");
             }
             con.disconect();
@@ -76,7 +79,7 @@ public class Controller {
         try{
             st = con.conex.createStatement();
             rs = st.executeQuery(query);
-            while(rs.next()){
+            if(rs.next()){
                last_name = rs.getString("APELLIDO_P_ALUMNO");
             }
             con.disconect();
@@ -95,7 +98,7 @@ public class Controller {
         try{
             st = con.conex.createStatement();
             rs = st.executeQuery(query);
-            while(rs.next()){
+            if(rs.next()){
                average = rs.getDouble("PROMEDIO");
             }
             con.disconect();
@@ -114,7 +117,7 @@ public class Controller {
         try{
             st = con.conex.createStatement();
             rs = st.executeQuery(query);
-            while(rs.next()){
+            if(rs.next()){
                password = rs.getString("PASSWORD");
             }
             con.disconect();
@@ -133,7 +136,7 @@ public class Controller {
         try{
             st = con.conex.createStatement();
             rs = st.executeQuery(query);
-            while(rs.next()){
+            if(rs.next()){
                mail = rs.getString("CORREO");
             }
             con.disconect();
@@ -170,5 +173,67 @@ public class Controller {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
-       
+    
+    public void newUser(String first_name, String last_name, String birthday, int grade, double average, int  carrer, int pay, int cash, String email, String password){
+        ConnectionOracle con = new ConnectionOracle();
+        con.conect();
+        int last_id = 0;
+        String query = "SELECT MAX(IDALUMNO) FROM ALUMNO ";
+        Statement st = null;
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+        System.out.println(last_id);
+        try{
+            st = con.conex.createStatement(); 
+            rs = st.executeQuery(query);
+            if(rs.next()){
+                //System.out.println("ejecutado");
+                last_id =  rs.getInt("MAX(IDALUMNO)");
+                //System.out.println(last_id);
+            }
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }
+        last_id = last_id + 1;
+        //System.out.println(last_id); 
+        query = "INSERT INTO USUARIO (IDUSUARIO, CORREO, PASSWORD) VALUES (?, ?, ?)";
+        try{
+            ps = con.conex.prepareStatement(query);
+            ps.setInt(1, last_id);
+            ps.setString(2, email);
+            ps.setString(3, password);
+            ps.execute();
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }
+        ps = null;
+        query = "INSERT INTO ALUMNO (IDALUMNO, NOMBRE_ALUMNO, APELLIDO_P_ALUMNO, FECHA_NACIMIENTO, SEMESTRE,"+
+                "PROMEDIO, CARRERA_IDCARRERA, USUARIO_IDUSUARIO, PAGO_IDPAGO, COBRO_IDCOBRO )"+
+                "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ? ,?)";
+        try{
+            ps = con.conex.prepareStatement(query);
+            ps.setInt(1,last_id);
+            ps.setString(2, first_name);
+            ps.setString(3, last_name);
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/mm/yyyy");
+            String strFecha = birthday;
+            Date fecha = null;
+            try {
+                fecha =  formatter.parse(strFecha);
+            } catch (ParseException ex) {}
+            java.sql.Date fechasql = null;
+            fechasql = new java.sql.Date(fecha.getTime());
+            ps.setDate(4, fechasql);
+            ps.setInt(5,grade);
+            ps.setDouble(6, average);
+            ps.setInt(7, carrer);
+            ps.setInt(8, last_id);
+            ps.setInt(9, pay);
+            ps.setInt(10, cash);
+            ps.execute();
+             con.disconect();
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }
+    }
 }

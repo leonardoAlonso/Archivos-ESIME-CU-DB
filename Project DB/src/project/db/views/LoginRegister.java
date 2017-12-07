@@ -55,9 +55,6 @@ public class LoginRegister extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
-        jSeparator6 = new javax.swing.JSeparator();
-        jSeparator7 = new javax.swing.JSeparator();
-        jSeparator8 = new javax.swing.JSeparator();
         jLabel12 = new javax.swing.JLabel();
         jSeparator9 = new javax.swing.JSeparator();
         jLabel13 = new javax.swing.JLabel();
@@ -66,15 +63,15 @@ public class LoginRegister extends javax.swing.JFrame {
         last_name_register = new javax.swing.JTextField();
         birthday_register = new javax.swing.JTextField();
         grade_register = new javax.swing.JTextField();
-        carrer_register = new javax.swing.JTextField();
         average_register = new javax.swing.JTextField();
-        pay_register = new javax.swing.JTextField();
-        cash_register = new javax.swing.JTextField();
         mail_register = new javax.swing.JTextField();
         pass_register = new javax.swing.JPasswordField();
         SignUp = new javax.swing.JButton();
         btn_exit = new javax.swing.JButton();
         btn_min = new javax.swing.JButton();
+        combo_pay = new javax.swing.JComboBox();
+        combo_carrer = new javax.swing.JComboBox();
+        combo_cash = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(34, 49, 63));
@@ -109,12 +106,14 @@ public class LoginRegister extends javax.swing.JFrame {
         pass_login.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         pass_login.setForeground(new java.awt.Color(255, 255, 255));
         pass_login.setBorder(null);
+        pass_login.setCaretColor(new java.awt.Color(255, 255, 255));
         jPanel1.add(pass_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 340, -1));
 
         mail_login.setBackground(new java.awt.Color(52, 152, 219));
         mail_login.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         mail_login.setForeground(new java.awt.Color(255, 255, 255));
         mail_login.setBorder(null);
+        mail_login.setCaretColor(new java.awt.Color(255, 255, 255));
         mail_login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mail_loginActionPerformed(evt);
@@ -193,6 +192,7 @@ public class LoginRegister extends javax.swing.JFrame {
         first_name_register.setForeground(new java.awt.Color(255, 255, 255));
         first_name_register.setToolTipText("Enter your first name");
         first_name_register.setBorder(null);
+        first_name_register.setCaretColor(new java.awt.Color(255, 255, 255));
         first_name_register.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 first_name_registerActionPerformed(evt);
@@ -203,46 +203,37 @@ public class LoginRegister extends javax.swing.JFrame {
         last_name_register.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         last_name_register.setForeground(new java.awt.Color(255, 255, 255));
         last_name_register.setBorder(null);
+        last_name_register.setCaretColor(new java.awt.Color(255, 255, 255));
 
         birthday_register.setBackground(new java.awt.Color(34, 49, 63));
         birthday_register.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         birthday_register.setForeground(new java.awt.Color(255, 255, 255));
         birthday_register.setBorder(null);
+        birthday_register.setCaretColor(new java.awt.Color(255, 255, 255));
 
         grade_register.setBackground(new java.awt.Color(34, 49, 63));
         grade_register.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         grade_register.setForeground(new java.awt.Color(255, 255, 255));
         grade_register.setBorder(null);
-
-        carrer_register.setBackground(new java.awt.Color(34, 49, 63));
-        carrer_register.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        carrer_register.setForeground(new java.awt.Color(255, 255, 255));
-        carrer_register.setBorder(null);
+        grade_register.setCaretColor(new java.awt.Color(255, 255, 255));
 
         average_register.setBackground(new java.awt.Color(34, 49, 63));
         average_register.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         average_register.setForeground(new java.awt.Color(255, 255, 255));
         average_register.setBorder(null);
-
-        pay_register.setBackground(new java.awt.Color(34, 49, 63));
-        pay_register.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        pay_register.setForeground(new java.awt.Color(255, 255, 255));
-        pay_register.setBorder(null);
-
-        cash_register.setBackground(new java.awt.Color(34, 49, 63));
-        cash_register.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        cash_register.setForeground(new java.awt.Color(255, 255, 255));
-        cash_register.setBorder(null);
+        average_register.setCaretColor(new java.awt.Color(255, 255, 255));
 
         mail_register.setBackground(new java.awt.Color(34, 49, 63));
         mail_register.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         mail_register.setForeground(new java.awt.Color(255, 255, 255));
         mail_register.setBorder(null);
+        mail_register.setCaretColor(new java.awt.Color(255, 255, 255));
 
         pass_register.setBackground(new java.awt.Color(34, 49, 63));
         pass_register.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         pass_register.setForeground(new java.awt.Color(255, 255, 255));
         pass_register.setBorder(null);
+        pass_register.setCaretColor(new java.awt.Color(255, 255, 255));
 
         SignUp.setBackground(new java.awt.Color(52, 152, 219));
         SignUp.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
@@ -250,6 +241,11 @@ public class LoginRegister extends javax.swing.JFrame {
         SignUp.setText("SignUp");
         SignUp.setBorder(null);
         SignUp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        SignUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SignUpActionPerformed(evt);
+            }
+        });
 
         btn_exit.setBackground(new java.awt.Color(34, 49, 63));
         btn_exit.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
@@ -289,85 +285,92 @@ public class LoginRegister extends javax.swing.JFrame {
             }
         });
 
+        combo_pay.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        combo_pay.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Debito", "Credito", "PayPal", "Deposito" }));
+
+        combo_carrer.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        combo_carrer.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "IC", "ICE", "IM", "ISISA" }));
+
+        combo_cash.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        combo_cash.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Debito", "Credito", "PayPal", "Deposito" }));
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(160, 160, 160)
+                .addComponent(SignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btn_min)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_exit))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(0, 272, Short.MAX_VALUE)
-                                .addComponent(btn_min)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_exit))
-                            .addComponent(pay_register, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(average_register, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jSeparator10)
                                 .addComponent(pass_register, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(cash_register, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel10)
                             .addComponent(jLabel12)
                             .addComponent(jLabel13)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jSeparator9, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(mail_register, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(141, 141, 141)
+                                .addComponent(jLabel2))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel8)
+                            .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel9)
+                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5)
+                            .addComponent(last_name_register, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(birthday_register, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(grade_register, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                    .addGap(141, 141, 141)
-                                    .addComponent(jLabel2))
-                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jSeparator7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jSeparator6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jSeparator5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(first_name_register, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(last_name_register, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(birthday_register, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(grade_register, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(carrer_register, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(combo_carrer, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(combo_pay, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jSeparator5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE))
+                            .addComponent(combo_cash, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(26, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(160, 160, 160)
-                        .addComponent(SignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(first_name_register, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn_exit)
-                            .addComponent(btn_min))))
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_exit)
+                    .addComponent(btn_min))
+                .addGap(5, 5, 5)
+                .addComponent(jLabel2)
                 .addGap(10, 10, 10)
                 .addComponent(jLabel5)
                 .addGap(4, 4, 4)
                 .addComponent(first_name_register, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addGap(3, 3, 3)
                 .addComponent(last_name_register, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addGap(4, 4, 4)
@@ -388,23 +391,17 @@ public class LoginRegister extends javax.swing.JFrame {
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
-                .addGap(2, 2, 2)
-                .addComponent(carrer_register, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(combo_carrer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
                 .addComponent(jLabel9)
-                .addGap(2, 2, 2)
-                .addComponent(pay_register, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(combo_pay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
                 .addComponent(jLabel10)
+                .addGap(9, 9, 9)
+                .addComponent(combo_cash, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cash_register, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel13)
                 .addGap(1, 1, 1)
                 .addComponent(mail_register, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -491,6 +488,65 @@ public class LoginRegister extends javax.swing.JFrame {
         btn_min.setBackground(min);
     }//GEN-LAST:event_btn_minMouseEntered
 
+    private void SignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignUpActionPerformed
+        // TODO add your handling code here:
+        Controller con = new Controller();
+        int carrera = 0;
+        int metodo_pago = 0;
+        int metodo_cobro = 0;
+        String pass = new String(pass_register.getPassword());
+        switch(String.valueOf(combo_carrer.getSelectedItem())){
+            case "IC":
+                carrera = 1;
+                break;
+            case "ICE":
+                carrera = 2;
+                break;
+            case "IM":
+                carrera = 3;
+                break;
+            case "ISISA":
+                carrera = 4;
+                break;
+            default:
+                carrera = 1;
+                break;
+        }
+        switch (String.valueOf(combo_pay.getSelectedItem())) {
+            case "Debito":
+                metodo_pago = 1;
+                break;
+            case "Credito":
+                metodo_pago = 2;
+                break;
+            case "Pay Pal":
+                metodo_pago = 3;
+                break;
+            case "Deposito":
+                metodo_pago = 4;
+                break;
+            default:
+                metodo_pago = 1;
+        }
+         switch (String.valueOf(combo_cash.getSelectedItem())) {
+            case "Debito":
+                metodo_cobro = 1;
+                break;
+            case "Credito":
+                metodo_cobro = 2;
+                break;
+            case "Pay Pal":
+                metodo_cobro = 3;
+                break;
+            case "Deposito":
+                metodo_cobro = 4;
+                break;
+            default:
+                metodo_cobro = 1;
+        }
+        con.newUser(first_name_register.getText(), last_name_register.getText(), birthday_register.getText(), Integer.parseInt(grade_register.getText()), Double.parseDouble(average_register.getText()), carrera, metodo_pago, metodo_cobro, mail_register.getText(), pass);
+    }//GEN-LAST:event_SignUpActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton SignUp;
@@ -498,8 +554,9 @@ public class LoginRegister extends javax.swing.JFrame {
     private javax.swing.JTextField birthday_register;
     private javax.swing.JButton btn_exit;
     private javax.swing.JButton btn_min;
-    private javax.swing.JTextField carrer_register;
-    private javax.swing.JTextField cash_register;
+    private javax.swing.JComboBox combo_carrer;
+    private javax.swing.JComboBox combo_cash;
+    private javax.swing.JComboBox combo_pay;
     private javax.swing.JTextField first_name_register;
     private javax.swing.JTextField grade_register;
     private javax.swing.JButton jButton1;
@@ -529,15 +586,11 @@ public class LoginRegister extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JSeparator jSeparator7;
-    private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTextField last_name_register;
     private javax.swing.JTextField mail_login;
     private javax.swing.JTextField mail_register;
     private javax.swing.JPasswordField pass_login;
     private javax.swing.JPasswordField pass_register;
-    private javax.swing.JTextField pay_register;
     // End of variables declaration//GEN-END:variables
 }
