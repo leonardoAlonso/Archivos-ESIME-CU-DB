@@ -14,6 +14,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.ArrayList;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import project.db.model.Archivo;
 import project.db.model.ConnectionOracle;
@@ -280,5 +281,114 @@ public class Controller {
        }
         
         return a;
+    }
+    public List<Archivo> getArchivoUser(){
+        ArrayList<Archivo> a = new ArrayList();
+       ConnectionOracle con = new ConnectionOracle();
+       con.conect();
+       String  query = "SELECT * FROM ARCHIVO WHERE ALUMNO_IDALUMNO = " + user_id;
+       Statement st = null;
+       ResultSet rs = null;
+        int id = 0;
+        String nombre = null;
+        String formato = null;
+        double costo = 0;
+        double calificacion = 0;
+        int num_Descargas = 0;
+        int puntos = 0;
+        int alumno_id = 0;
+        int clase_id = 0;
+        String ruta = null;
+        String descripcion = null;
+       try{
+           st = con.conex.createStatement();
+           rs= st.executeQuery(query);
+           while(rs.next()){
+               id = rs.getInt("IDARCHIVO");
+               nombre = rs.getString("NOMBRE_ARCHIVO");
+               formato = rs.getString("FORMATO_ARCHIVO");
+               costo = rs.getDouble("COSTO");
+               calificacion = rs.getDouble("CALIFICACION");
+               num_Descargas = rs.getInt("NUM_DESCARGAS");
+               puntos = rs.getInt("PUNTAJE");
+               alumno_id = rs.getInt("ALUMNO_IDALUMNO");
+               clase_id = rs.getInt("CLASE_IDCLASE");
+               ruta = rs.getString("RUTA_ARCHIVO");
+               descripcion = rs.getString("DESCRPCION");
+               Archivo arr = new Archivo(id,nombre,formato,costo,calificacion,num_Descargas,puntos,alumno_id,clase_id,ruta,descripcion);
+                a.add(arr);
+           }
+       }catch(SQLException e){
+           System.out.println(e.getMessage());
+       }
+        
+        return a;
+    }
+    
+    public JComboBox getItemms(){
+        JComboBox box = new JComboBox();
+        ConnectionOracle con = new ConnectionOracle();
+        con.conect();
+        Statement st = null;
+        ResultSet rs = null;
+        String query = "SELECT NOMBRE_MATERIA, NOMBRE_MAESTRO FROM MATERIA, MAESTRO, CLASE WHERE CLASE.MAESTRO_IDMAESTRO = MAESTRO.IDMAESTRO AND CLASE.MATERIA_IDMATERIA = MATERIA.IDMATERIA";
+        String materia = null;
+        try{
+            st = con.conex.createStatement();
+            rs = st.executeQuery(query);
+            while(rs.next()){
+                materia = rs.getString("NOMBRE_MATERIA");
+                box.addItem(rs.getString("NOMBRE_MATERIA"));
+            }
+        }catch(SQLException e){
+            System.out.println("Error");
+            System.out.println(e.getMessage());
+        }
+        return box;
+    }
+    
+    public void insertFile(String name, String format, int cost, double calificacion, int clase_id, String directory, String description){
+        ConnectionOracle con = new ConnectionOracle();
+        con.conect();
+        int last_id = 0;
+        String query = "SELECT MAX(IDARCHIVO) FROM ARCHIVO ";
+        Statement st = null;
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+        System.out.println(last_id);
+        try{
+            st = con.conex.createStatement(); 
+            rs = st.executeQuery(query);
+            if(rs.next()){
+                //System.out.println("ejecutado");
+                last_id =  rs.getInt("MAX(IDARCHIVO)");
+                //System.out.println(last_id);
+            }
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }
+        last_id = last_id + 1;
+        System.out.println(last_id);
+        query = "INSERT INTO ARCHIVO (IDARCHIVO, NOMBRE_ARCHIVO, FORMATO_ARCHIVO, COSTO, CALIFICACION,"+
+                "NUM_DESCARGAS, PUNTAJE, ALUMNO_IDALUMNO, CLASE_IDCLASE, RUTA_ARCHIVO,DESCRPCION )"+
+                "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ? ,?, ?)";
+        try{
+            ps = con.conex.prepareStatement(query);
+            ps.setInt(1,last_id);
+            ps.setString(2, name);
+            ps.setString(3, format);
+            ps.setInt(4, cost);
+            ps.setDouble(5,calificacion);
+            ps.setInt(6, 0);
+            ps.setInt(7, 0);
+            ps.setInt(8, user_id);
+            ps.setInt(9, clase_id);
+            ps.setString(10, directory);
+            ps.setString(11, description);
+            ps.execute();
+             con.disconect();
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }
     }
 }

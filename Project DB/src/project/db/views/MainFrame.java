@@ -104,6 +104,11 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Todo_List_32px.png"))); // NOI18N
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -314,6 +319,14 @@ public class MainFrame extends javax.swing.JFrame {
         up.setVisible(true);
         up.setLocationRelativeTo(null);
     }//GEN-LAST:event_label_uploadMouseClicked
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        // TODO add your handling code here:
+        MyFiles files = new MyFiles();
+        files.setVisible(true);
+        files.setLocationRelativeTo(null);
+        
+    }//GEN-LAST:event_jLabel6MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

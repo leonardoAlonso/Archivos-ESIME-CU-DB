@@ -6,6 +6,11 @@
 package project.db.views;
 
 import java.awt.Color;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import project.db.model.ConnectionOracle;
+import projectdb.controller.Controller;
 
 /**
  *
@@ -18,6 +23,23 @@ public class Upload extends javax.swing.JFrame {
      */
     public Upload() {
         initComponents();
+        ConnectionOracle con = new ConnectionOracle();
+        con.conect();
+        Statement st = null;
+        ResultSet rs = null;
+        String query = "SELECT NOMBRE_MATERIA, NOMBRE_MAESTRO FROM MATERIA, MAESTRO, CLASE WHERE CLASE.MAESTRO_IDMAESTRO = MAESTRO.IDMAESTRO AND CLASE.MATERIA_IDMATERIA = MATERIA.IDMATERIA";
+        String materia = null;
+        try{
+            st = con.conex.createStatement();
+            rs = st.executeQuery(query);
+            while(rs.next()){
+                materia = rs.getString("NOMBRE_MATERIA");
+                this.combo_class.addItem(rs.getString("NOMBRE_MATERIA"));
+            }
+        }catch(SQLException e){
+            System.out.println("Error");
+            System.out.println(e.getMessage());
+        }
     }
 
     /**
@@ -38,21 +60,21 @@ public class Upload extends javax.swing.JFrame {
         txt_name_file = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        txt_descripcion = new javax.swing.JTextPane();
         txt_costo = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         txt_calificacion = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
         jTextField5 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox();
+        combo_type = new javax.swing.JComboBox();
         jLabel6 = new javax.swing.JLabel();
-        txt_calificacion1 = new javax.swing.JTextField();
+        txt_ruta = new javax.swing.JTextField();
         jSeparator6 = new javax.swing.JSeparator();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         btn_exit = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox();
+        combo_class = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -92,9 +114,9 @@ public class Upload extends javax.swing.JFrame {
         jPanel1.add(txt_name_file, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 260, -1));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 260, -1));
 
-        jTextPane1.setBorder(null);
-        jTextPane1.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jScrollPane1.setViewportView(jTextPane1);
+        txt_descripcion.setBorder(null);
+        txt_descripcion.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jScrollPane1.setViewportView(txt_descripcion);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 330, 140));
 
@@ -118,22 +140,22 @@ public class Upload extends javax.swing.JFrame {
         jTextField5.setBorder(null);
         jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 260, -1));
 
-        jComboBox1.setBackground(new java.awt.Color(204, 204, 204));
-        jComboBox1.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecciona", ".docx", ".pdf", ".exe", ".cpp", ".java", ".txt", ".ppt", " " }));
-        jComboBox1.setBorder(null);
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 260, -1));
+        combo_type.setBackground(new java.awt.Color(204, 204, 204));
+        combo_type.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        combo_type.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecciona", ".docx", ".pdf", ".exe", ".cpp", ".java", ".txt", ".ppt", "otro", " " }));
+        combo_type.setBorder(null);
+        jPanel1.add(combo_type, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 260, -1));
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Upload File");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, -1, -1));
 
-        txt_calificacion1.setBackground(new java.awt.Color(52, 152, 219));
-        txt_calificacion1.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        txt_calificacion1.setForeground(new java.awt.Color(255, 255, 255));
-        txt_calificacion1.setBorder(null);
-        jPanel1.add(txt_calificacion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 220, -1));
+        txt_ruta.setBackground(new java.awt.Color(52, 152, 219));
+        txt_ruta.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        txt_ruta.setForeground(new java.awt.Color(255, 255, 255));
+        txt_ruta.setBorder(null);
+        jPanel1.add(txt_ruta, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 220, -1));
         jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 262, 220, 10));
 
         jButton1.setBackground(new java.awt.Color(34, 49, 63));
@@ -141,6 +163,11 @@ public class Upload extends javax.swing.JFrame {
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Upload");
         jButton1.setBorder(null);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 530, 70, 30));
 
         jButton2.setBackground(new java.awt.Color(34, 49, 63));
@@ -151,7 +178,7 @@ public class Upload extends javax.swing.JFrame {
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 100, 30));
 
         btn_exit.setBackground(new java.awt.Color(52, 152, 219));
-        btn_exit.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        btn_exit.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         btn_exit.setForeground(new java.awt.Color(255, 255, 255));
         btn_exit.setText("X");
         btn_exit.setBorder(null);
@@ -175,11 +202,11 @@ public class Upload extends javax.swing.JFrame {
         jLabel7.setText("Clase");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
 
-        jComboBox2.setBackground(new java.awt.Color(204, 204, 204));
-        jComboBox2.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecciona", ".docx", ".pdf", ".exe", ".cpp", ".java", ".txt", ".ppt", " " }));
-        jComboBox2.setBorder(null);
-        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 260, -1));
+        combo_class.setBackground(new java.awt.Color(204, 204, 204));
+        combo_class.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        combo_class.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecciona" }));
+        combo_class.setBorder(null);
+        jPanel1.add(combo_class, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 260, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -214,15 +241,55 @@ public class Upload extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btn_exitMouseExited
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Controller con = new Controller();
+        String formato = null;
+        switch(String.valueOf(combo_type.getSelectedItem())){
+            case ".docx":
+                formato = ".docx" ;
+                break;
+            case ".pdf":
+                formato = ".pdf" ;
+                break;
+            case ".exe":
+                formato = ".exe" ;
+                break;
+            case ".cpp":
+                formato = ".cpp" ;
+                break;
+            case ".java":
+                formato = ".java" ;
+                break;
+            case ".txt":
+                formato = ".txt" ;
+                break;
+            case ".ppt":
+                formato = ".ppt" ;
+                break;
+            default:
+                formato = "otro";
+                break;        
+        }
+        int clase = 0;
+        if("Selecciona".equals(String.valueOf(combo_class.getSelectedItem()))){
+            clase = 1;
+        }else{
+            clase = combo_class.getSelectedIndex();
+        }
+        con.insertFile(txt_name_file.getText(), formato, Integer.parseInt(txt_costo.getText()), Double.parseDouble(txt_calificacion.getText()), clase, txt_ruta.getText(), txt_descripcion.getText());
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_exit;
+    private javax.swing.JComboBox combo_class;
+    private javax.swing.JComboBox combo_type;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -237,10 +304,10 @@ public class Upload extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTextField txt_calificacion;
-    private javax.swing.JTextField txt_calificacion1;
     private javax.swing.JTextField txt_costo;
+    private javax.swing.JTextPane txt_descripcion;
     private javax.swing.JTextField txt_name_file;
+    private javax.swing.JTextField txt_ruta;
     // End of variables declaration//GEN-END:variables
 }

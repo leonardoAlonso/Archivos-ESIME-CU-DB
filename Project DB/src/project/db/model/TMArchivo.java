@@ -26,7 +26,7 @@ public class TMArchivo implements TableModel {
 
     @Override
     public int getColumnCount() {
-       return 3;
+       return 5;
     }
 
     @Override
@@ -41,7 +41,13 @@ public class TMArchivo implements TableModel {
                 break;
             case 2:
                 title = "puntos";
-                break;    
+                break;   
+            case 3:
+                title = "descargas";
+                break;
+            case 4:
+                title = "costo";
+                break;
         }
         return title;
     }
@@ -62,14 +68,19 @@ public class TMArchivo implements TableModel {
         String valor = null;
          switch(columnIndex){
             case 0:
-                valor = String.valueOf(a.getAlumno_id());
+                valor = String.valueOf(a.getId());
                 break;
             case 1:
                 valor = a.getNombre();
                 break;
             case 2:
                 valor = String.valueOf(a.getPuntos());
-                break;    
+                break;   
+            case 3:
+                valor =  String.valueOf(a.getNum_Descargas());
+                break;
+            case 4: 
+                valor =  String.valueOf(a.getCosto());
         }
          return valor;
     }
