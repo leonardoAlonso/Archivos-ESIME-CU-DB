@@ -4,7 +4,11 @@
  * and open the template in the editor.
  */
 package project.db.views;
+import java.util.List;
+import java.util.ArrayList;
 import projectdb.controller.Controller;
+import project.db.model.Archivo;
+import project.db.model.TMArchivo;
 
 /**
  *
@@ -16,51 +20,15 @@ public class MainFrame extends javax.swing.JFrame {
      * Creates new form MainFrame
      */
     
-    String user;
-    String last_name;
-    String mail;
-    String password;
-    double promedio;
-
-    public String getUser() {
-        return user;
-    }
-
-    public String getLast_name() {
-        return last_name;
-    }
-
-    public String getMail() {
-        return mail;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public double getPromedio() {
-        return promedio;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
-    }
-
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setPromedio(double promedio) {
-        this.promedio = promedio;
-    }
+    private final String user;
+    private final String last_name;
+    private final String mail;
+    private final String password;
+    private final double promedio;
+    private TMArchivo  modelo;
+    private List<Archivo> archivo;
+    
+    
     
     public MainFrame(String user, String last_name, double promedio, String correo, String password) {
         initComponents();
@@ -75,6 +43,10 @@ public class MainFrame extends javax.swing.JFrame {
         txt_promedio.setText(String.valueOf(promedio));
         txt_mail.setText(correo);
         txt_pass.setText(password);
+        Controller con = new Controller();
+        archivo = con.getArchivo();
+        modelo = new TMArchivo(archivo);
+        table_file.setModel(modelo);
     }
 
     /**
@@ -91,6 +63,8 @@ public class MainFrame extends javax.swing.JFrame {
         label_upload = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        table_file = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         txt_nombre = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
@@ -159,6 +133,28 @@ public class MainFrame extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(34, 49, 63));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPane1.setBorder(null);
+
+        table_file.setBackground(new java.awt.Color(34, 49, 63));
+        table_file.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        table_file.setForeground(new java.awt.Color(255, 255, 255));
+        table_file.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        table_file.setGridColor(new java.awt.Color(52, 152, 219));
+        jScrollPane1.setViewportView(table_file);
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 670, 240));
+
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 720, 260));
 
         jPanel3.setBackground(new java.awt.Color(236, 240, 241));
@@ -333,6 +329,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -342,6 +339,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel label_upload;
     private javax.swing.JLabel label_user;
+    private javax.swing.JTable table_file;
     private javax.swing.JTextField txt_ape_pat;
     private javax.swing.JTextField txt_mail;
     private javax.swing.JTextField txt_nombre;
