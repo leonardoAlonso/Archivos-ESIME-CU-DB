@@ -545,6 +545,7 @@ public class LoginRegister extends javax.swing.JFrame {
                 metodo_cobro = 1;
         }
         con.newUser(first_name_register.getText(), last_name_register.getText(), birthday_register.getText(), Integer.parseInt(grade_register.getText()), Double.parseDouble(average_register.getText()), carrera, metodo_pago, metodo_cobro, mail_register.getText(), pass);
+        con.login(mail_register.getText(), pass);
     }//GEN-LAST:event_SignUpActionPerformed
 
 

@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 import project.db.model.ConnectionOracle;
 import projectdb.controller.Controller;
 
@@ -278,6 +279,7 @@ public class Upload extends javax.swing.JFrame {
             clase = combo_class.getSelectedIndex();
         }
         con.insertFile(txt_name_file.getText(), formato, Integer.parseInt(txt_costo.getText()), Double.parseDouble(txt_calificacion.getText()), clase, txt_ruta.getText(), txt_descripcion.getText());
+       JOptionPane.showMessageDialog(null, "Felicidades tu archivo ha sido subido");
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 

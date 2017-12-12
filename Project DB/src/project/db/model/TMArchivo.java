@@ -7,6 +7,8 @@ package project.db.model;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 import java.util.List;
+import javax.swing.JOptionPane;
+import projectdb.controller.Controller;
 
 /**
  *
@@ -59,7 +61,7 @@ public class TMArchivo implements TableModel {
 
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
-        return false;
+        return true;
     }
 
     @Override
@@ -87,16 +89,19 @@ public class TMArchivo implements TableModel {
 
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-        Archivo a = archivo.get(rowIndex);  
+        Archivo a = archivo.get(rowIndex); 
+        Controller con  = new Controller();
         switch(columnIndex){
-            case 0:
-                a.setAlumno_id(Integer.parseInt(aValue.toString()));
-                break;
             case 1:
                 a.setNombre(aValue.toString());
-            case 2:
-                a.setPuntos(Integer.parseInt(aValue.toString()));
-                break;    
+                con.update_nombre_archivo(aValue.toString(), a.getId());
+                JOptionPane.showMessageDialog(null, "Datos actualizados");
+                break;
+            case 4:
+                a.setCosto(Double.parseDouble(aValue.toString()));
+                con.update_precio_archivo(Double.parseDouble(aValue.toString()), a.getId());
+                JOptionPane.showMessageDialog(null, "Datos actualizados");
+                break;
         }
     }
     

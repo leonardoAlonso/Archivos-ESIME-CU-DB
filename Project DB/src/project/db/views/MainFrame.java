@@ -6,6 +6,7 @@
 package project.db.views;
 import java.util.List;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import projectdb.controller.Controller;
 import project.db.model.Archivo;
 import project.db.model.TMArchivo;
@@ -78,7 +79,8 @@ public class MainFrame extends javax.swing.JFrame {
         txt_pass = new javax.swing.JPasswordField();
         combo_pay = new javax.swing.JComboBox();
         combo_cobro = new javax.swing.JComboBox();
-        btn_update = new javax.swing.JButton();
+        btn_delete = new javax.swing.JButton();
+        btn_update1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -86,6 +88,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         label_user = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -215,17 +218,28 @@ public class MainFrame extends javax.swing.JFrame {
         combo_cobro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Metodo de cobro", "Debito", "Credito", "Pay Pal", "Depostito" }));
         jPanel3.add(combo_cobro, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 160, -1));
 
-        btn_update.setBackground(new java.awt.Color(34, 49, 63));
-        btn_update.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        btn_update.setForeground(new java.awt.Color(255, 255, 255));
-        btn_update.setText("Update");
-        btn_update.setBorder(null);
-        btn_update.addActionListener(new java.awt.event.ActionListener() {
+        btn_delete.setBackground(new java.awt.Color(204, 0, 0));
+        btn_delete.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btn_delete.setText("Delete");
+        btn_delete.setBorder(null);
+        btn_delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_updateActionPerformed(evt);
+                btn_deleteActionPerformed(evt);
             }
         });
-        jPanel3.add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 120, 160, 30));
+        jPanel3.add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 120, 70, 30));
+
+        btn_update1.setBackground(new java.awt.Color(34, 49, 63));
+        btn_update1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btn_update1.setForeground(new java.awt.Color(255, 255, 255));
+        btn_update1.setText("Update");
+        btn_update1.setBorder(null);
+        btn_update1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_update1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btn_update1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 120, 70, 30));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 720, 160));
 
@@ -242,7 +256,7 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel4.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 310, 20));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Male_User_32px.png"))); // NOI18N
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, -1, -1));
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 10, -1, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Cancel_32px_1.png"))); // NOI18N
         jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -254,7 +268,17 @@ public class MainFrame extends javax.swing.JFrame {
 
         label_user.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         label_user.setText("User");
-        jPanel4.add(label_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, -1, -1));
+        jPanel4.add(label_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 20, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel1.setText("Log Out");
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 50, -1, -1));
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, 720, 70));
 
@@ -270,9 +294,46 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_nombreActionPerformed
 
-    private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
+    private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
         // TODO add your handling code here:
-        Controller con = new Controller();
+       int resp = JOptionPane.showConfirmDialog(null, "¿Esta seguro?", "Alerta!", JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE);
+       LoginRegister log = null;
+       if(resp == 0){
+           Controller con = new Controller();
+           con.delete_user();
+           this.setVisible(false);
+           log = new LoginRegister();
+           log.setVisible(true);
+           log.setLocationRelativeTo(null);
+       }
+    }//GEN-LAST:event_btn_deleteActionPerformed
+
+    private void label_uploadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_uploadMouseClicked
+        // TODO add your handling code here:
+        Upload up  = new Upload();
+        up.setVisible(true);
+        up.setLocationRelativeTo(null);
+    }//GEN-LAST:event_label_uploadMouseClicked
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        // TODO add your handling code here:
+        MyFiles files = new MyFiles();
+        files.setVisible(true);
+        files.setLocationRelativeTo(null);
+        
+    }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+        this.setVisible(false);
+        LoginRegister log = new LoginRegister();
+        log.setVisible(true);
+        log.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void btn_update1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_update1ActionPerformed
+        // TODO add your handling code here:
+         Controller con = new Controller();
         int metodo_pago = 0;
         int metodo_cobro = 0;
         switch (String.valueOf(combo_pay.getSelectedItem())) {
@@ -311,28 +372,15 @@ public class MainFrame extends javax.swing.JFrame {
          System.out.println(metodo_pago);
         con.updateUser(txt_nombre.getText(), txt_ape_pat.getText(), Double.parseDouble(txt_promedio.getText()), metodo_pago, metodo_cobro, txt_mail.getText(), String.valueOf(txt_pass.getPassword()));
         
-    }//GEN-LAST:event_btn_updateActionPerformed
-
-    private void label_uploadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_uploadMouseClicked
-        // TODO add your handling code here:
-        Upload up  = new Upload();
-        up.setVisible(true);
-        up.setLocationRelativeTo(null);
-    }//GEN-LAST:event_label_uploadMouseClicked
-
-    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        // TODO add your handling code here:
-        MyFiles files = new MyFiles();
-        files.setVisible(true);
-        files.setLocationRelativeTo(null);
-        
-    }//GEN-LAST:event_jLabel6MouseClicked
+    }//GEN-LAST:event_btn_update1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_update;
+    private javax.swing.JButton btn_delete;
+    private javax.swing.JButton btn_update1;
     private javax.swing.JComboBox combo_cobro;
     private javax.swing.JComboBox combo_pay;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

@@ -351,6 +351,7 @@ public class Controller {
         ConnectionOracle con = new ConnectionOracle();
         con.conect();
         int last_id = 0;
+        int last_operacion = 0;
         String query = "SELECT MAX(IDARCHIVO) FROM ARCHIVO ";
         Statement st = null;
         ResultSet rs = null;
@@ -364,10 +365,19 @@ public class Controller {
                 last_id =  rs.getInt("MAX(IDARCHIVO)");
                 //System.out.println(last_id);
             }
+            query = "SELECT MAX(ID_ALUMNO_OPERACION) FROM ALUMNO_OPERACION ";
+            st = con.conex.createStatement(); 
+            rs = st.executeQuery(query);
+            if(rs.next()){
+                //System.out.println("ejecutado");
+                last_operacion =  rs.getInt("MAX(ID_ALUMNO_OPERACION)");
+                //System.out.println(last_id);
+            }
         }catch(SQLException e){
             System.out.println(e.getMessage());
         }
         last_id = last_id + 1;
+        last_operacion = last_operacion + 1;
         System.out.println(last_id);
         query = "INSERT INTO ARCHIVO (IDARCHIVO, NOMBRE_ARCHIVO, FORMATO_ARCHIVO, COSTO, CALIFICACION,"+
                 "NUM_DESCARGAS, PUNTAJE, ALUMNO_IDALUMNO, CLASE_IDCLASE, RUTA_ARCHIVO,DESCRPCION )"+
@@ -386,9 +396,95 @@ public class Controller {
             ps.setString(10, directory);
             ps.setString(11, description);
             ps.execute();
-             con.disconect();
+            query = "INSERT INTO ALUMNO_OPERACION VALUES(?, ?,?, ?)";
+             ps = con.conex.prepareStatement(query);
+             ps.setInt(1, last_operacion);
+             ps.setInt(2,user_id);
+             ps.setInt(3,1);
+             ps.setInt(4, last_id);
+             ps.execute();
+            con.disconect();
         }catch(SQLException e){
             System.out.println(e.getMessage());
         }
+    }
+    public void delete_user(){
+        String query = null;
+        ConnectionOracle con = new ConnectionOracle();
+        con.conect();
+        PreparedStatement preparedStmt = null;
+         try{
+            query = "DELETE FROM ARCHIVO WHERE ALUMNO_IDALUMNO = ?";
+            preparedStmt = con.conex.prepareStatement(query);
+            preparedStmt.setInt(1, user_id);
+            preparedStmt.execute();
+            System.out.println("2");
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }        
+        preparedStmt = null;
+        try{
+            query = "DELETE  FROM ALUMNO WHERE USUARIO_IDUSUARIO = ?";
+            preparedStmt = con.conex.prepareStatement(query);
+            preparedStmt.setInt(1, user_id);
+            // execute the preparedstatement
+            preparedStmt.execute();
+            System.out.println("0");
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }
+        preparedStmt = null;
+         try{
+            query = "DELETE  FROM ALUMNO_OPERACION WHERE ALUMNO_IDALUMNO = ?";
+            preparedStmt = con.conex.prepareStatement(query);
+            preparedStmt.setInt(1, user_id);
+            preparedStmt.execute();
+            System.out.println("3");
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }
+         preparedStmt = null;
+        try{
+            query = "DELETE  FROM USUARIO WHERE IDUSUARIO = ?";
+            preparedStmt = con.conex.prepareStatement(query);
+            preparedStmt.setInt(1, user_id);
+            preparedStmt.execute();
+            System.out.println("1");
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }
+         con.disconect();
+    }
+    public void update_nombre_archivo(String nombre_archivo, int id){
+        ConnectionOracle con  = new ConnectionOracle();
+         con.conect();
+         String query = "UPDATE ARCHIVO SET NOMBRE_ARCHIVO = ? WHERE ALUMNO_IDALUMNO = ? AND IDARCHIVO = ?";
+         PreparedStatement st = null;
+         try{
+             st = con.conex.prepareStatement(query);
+             st.setString(1, nombre_archivo);
+             st.setInt(2,user_id);
+             st.setInt(3,id);
+             st.execute();
+             con.disconect();
+         }catch(SQLException e){
+             System.out.println(e.getMessage());
+         }
+    }
+    public void update_precio_archivo(double costo, int id){
+        ConnectionOracle con  = new ConnectionOracle();
+         con.conect();
+         String query = "UPDATE ARCHIVO SET COSTO = ? WHERE ALUMNO_IDALUMNO =  ? AND IDARCHIVO = ? ";
+         PreparedStatement st = null;
+         try{
+             st = con.conex.prepareStatement(query);
+             st.setDouble(1, costo);
+             st.setInt(2,user_id);
+             st.setInt(3,id);
+             st.execute();
+             con.disconect();
+         }catch(SQLException e){
+             System.out.println(e.getMessage());
+         }
     }
 }

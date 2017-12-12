@@ -7,7 +7,11 @@ package project.db.views;
 
 import java.awt.Color;
 import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import project.db.model.Archivo;
+import project.db.model.ConnectionOracle;
 import project.db.model.TMArchivo;
 import projectdb.controller.Controller;
 
@@ -21,8 +25,8 @@ public class MyFiles extends javax.swing.JFrame {
      * Creates new form MyFiles
      */
     
-    private TMArchivo  modelo;
-    private List<Archivo> archivo;
+    private final TMArchivo  modelo;
+    private final List<Archivo> archivo;
     public MyFiles() {
         initComponents();
         Controller con = new Controller();
