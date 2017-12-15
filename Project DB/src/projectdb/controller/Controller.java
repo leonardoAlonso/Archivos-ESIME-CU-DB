@@ -487,4 +487,38 @@ public class Controller {
              System.out.println(e.getMessage());
          }
     }
+    public void insertclase(int id_maestro,int id_materia, int id_carrera){       
+        ConnectionOracle con = new ConnectionOracle();       
+        con.conect();
+        int last_id = 0;	        
+        String query = "SELECT MAX(ID_CLASE) FROM CLASE ";
+        Statement st = null;
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+        System.out.println(last_id);
+        try{            
+            st = con.conex.createStatement(); 		            
+            rs = st.executeQuery(query);
+            if(rs.next()){               
+	//System.out.println("ejecutado");                
+	last_id =  rs.getInt("MAX(ID_CLASE)");
+            }
+        }catch(SQLException e){ 
+            System.out.println(e.getMessage());
+        }
+        last_id = last_id + 1;
+        System.out.println(last_id);
+        query = "INSERT INTO CLASE (ID_CLASE, MAESTRO_IDMAESTRO, MATERIA_IDMATERIA,CARRERA_IDCARRERA) VALUES(?, ?, ?, ?)";        
+        try {
+            ps = con.conex.prepareStatement(query);
+            ps.setInt(1,last_id);
+            ps.setInt(2, id_maestro);
+            ps.setInt(3, id_materia);
+            ps.setInt(4, id_carrera);
+            ps.execute();	
+            con.disconect();
+        }catch(SQLException e){	            
+                System.out.println(e.getMessage());
+        }	    
+    }
 }

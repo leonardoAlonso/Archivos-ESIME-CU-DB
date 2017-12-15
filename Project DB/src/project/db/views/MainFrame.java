@@ -97,6 +97,11 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(52, 152, 219));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Download_32px.png"))); // NOI18N
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
 
         label_upload.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Upload_32px.png"))); // NOI18N
         label_upload.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -107,6 +112,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Todo_List_32px.png"))); // NOI18N
+        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel6MouseClicked(evt);
@@ -373,6 +379,11 @@ public class MainFrame extends javax.swing.JFrame {
         con.updateUser(txt_nombre.getText(), txt_ape_pat.getText(), Double.parseDouble(txt_promedio.getText()), metodo_pago, metodo_cobro, txt_mail.getText(), String.valueOf(txt_pass.getPassword()));
         
     }//GEN-LAST:event_btn_update1ActionPerformed
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jLabel4MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

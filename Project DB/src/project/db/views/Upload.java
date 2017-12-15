@@ -34,8 +34,7 @@ public class Upload extends javax.swing.JFrame {
             st = con.conex.createStatement();
             rs = st.executeQuery(query);
             while(rs.next()){
-                materia = rs.getString("NOMBRE_MATERIA");
-                this.combo_class.addItem(rs.getString("NOMBRE_MATERIA"));
+                this.combo_class.addItem(rs.getString("NOMBRE_MATERIA") +" "+ rs.getString("NOMBRE_MAESTRO"));
             }
         }catch(SQLException e){
             System.out.println("Error");
@@ -76,6 +75,7 @@ public class Upload extends javax.swing.JFrame {
         btn_exit = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         combo_class = new javax.swing.JComboBox();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -86,7 +86,7 @@ public class Upload extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Descripcion");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -112,28 +112,28 @@ public class Upload extends javax.swing.JFrame {
         txt_name_file.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         txt_name_file.setForeground(new java.awt.Color(255, 255, 255));
         txt_name_file.setBorder(null);
-        jPanel1.add(txt_name_file, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 260, -1));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 260, -1));
+        jPanel1.add(txt_name_file, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 350, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 350, 10));
 
         txt_descripcion.setBorder(null);
         txt_descripcion.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jScrollPane1.setViewportView(txt_descripcion);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 330, 140));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 430, 140));
 
         txt_costo.setBackground(new java.awt.Color(52, 152, 219));
         txt_costo.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         txt_costo.setForeground(new java.awt.Color(255, 255, 255));
         txt_costo.setBorder(null);
-        jPanel1.add(txt_costo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 260, -1));
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 260, -1));
+        jPanel1.add(txt_costo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 350, -1));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 350, 10));
 
         txt_calificacion.setBackground(new java.awt.Color(52, 152, 219));
         txt_calificacion.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         txt_calificacion.setForeground(new java.awt.Color(255, 255, 255));
         txt_calificacion.setBorder(null);
-        jPanel1.add(txt_calificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 230, -1));
-        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 230, -1));
+        jPanel1.add(txt_calificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 320, -1));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 320, 10));
 
         jTextField5.setBackground(new java.awt.Color(52, 152, 219));
         jTextField5.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
@@ -145,7 +145,7 @@ public class Upload extends javax.swing.JFrame {
         combo_type.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         combo_type.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecciona", ".docx", ".pdf", ".exe", ".cpp", ".java", ".txt", ".ppt", "otro", " " }));
         combo_type.setBorder(null);
-        jPanel1.add(combo_type, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 260, -1));
+        jPanel1.add(combo_type, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 350, -1));
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -156,8 +156,8 @@ public class Upload extends javax.swing.JFrame {
         txt_ruta.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         txt_ruta.setForeground(new java.awt.Color(255, 255, 255));
         txt_ruta.setBorder(null);
-        jPanel1.add(txt_ruta, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 220, -1));
-        jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 262, 220, 10));
+        jPanel1.add(txt_ruta, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 320, -1));
+        jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 262, 310, 20));
 
         jButton1.setBackground(new java.awt.Color(34, 49, 63));
         jButton1.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
@@ -169,7 +169,7 @@ public class Upload extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 530, 70, 30));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 550, 70, 30));
 
         jButton2.setBackground(new java.awt.Color(34, 49, 63));
         jButton2.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
@@ -196,7 +196,7 @@ public class Upload extends javax.swing.JFrame {
                 btn_exitActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, 50, 30));
+        jPanel1.add(btn_exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 50, 30));
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -207,19 +207,30 @@ public class Upload extends javax.swing.JFrame {
         combo_class.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         combo_class.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecciona" }));
         combo_class.setBorder(null);
-        jPanel1.add(combo_class, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 260, -1));
+        jPanel1.add(combo_class, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 360, -1));
+
+        jLabel8.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Nueva clase");
+        jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 576, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
         );
 
         pack();
@@ -283,6 +294,14 @@ public class Upload extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+        // TODO add your handling code here:
+        InsertClass clase =  new InsertClass();
+        this.setVisible(false);
+        clase.setVisible(true);
+        clase.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jLabel8MouseClicked
+
     
    
 
@@ -299,6 +318,7 @@ public class Upload extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
