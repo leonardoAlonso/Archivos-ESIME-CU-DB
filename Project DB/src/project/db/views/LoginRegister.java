@@ -6,7 +6,7 @@
 package project.db.views;
 
 import java.awt.Color;
-import projectdb.controller.Controller;
+import project.db.controller.Controller;
 /**
  *
  * @author Leonardo

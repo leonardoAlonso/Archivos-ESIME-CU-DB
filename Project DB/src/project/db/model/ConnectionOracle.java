@@ -25,17 +25,19 @@ public class ConnectionOracle {
         url = "jdbc:oracle:thin:@localhost:1521:XE";
         conex = null;
     }
-    public void conect(){
+    public Connection conect(){
         try{
             DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
             conex = DriverManager.getConnection(url,user,password); 
             //UI.put("OptionPane.background",new ColorUIResource(34,49,63));
             //UI.put("OptionPane.foreground", new ColorUIResource(255,255,255));
             //JOptionPane.showMessageDialog(null,"Conexion exitosa");
+            return conex;
         }catch(SQLException e){
            // UI.put("OptionPane.background",new ColorUIResource(255,0,0));
             JOptionPane.showMessageDialog(null,"Conexion fallida");
         }
+        return null;
     }
     public void disconect(){
         try{

@@ -8,7 +8,7 @@ import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 import java.util.List;
 import javax.swing.JOptionPane;
-import projectdb.controller.Controller;
+import project.db.controller.Controller;
 
 /**
  *

@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import project.db.model.ConnectionOracle;
-import projectdb.controller.Controller;
+import project.db.controller.Controller;
 
 /**
  *

@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
-import projectdb.controller.Controller;
+import project.db.controller.Controller;
 import project.db.model.Archivo;
 import project.db.model.TMArchivo;
 
@@ -61,7 +61,6 @@ public class MainFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
         label_upload = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -98,13 +97,6 @@ public class MainFrame extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(52, 152, 219));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Download_32px.png"))); // NOI18N
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
-            }
-        });
-
         label_upload.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Upload_32px.png"))); // NOI18N
         label_upload.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         label_upload.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -128,7 +120,6 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(18, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(label_upload, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
@@ -140,9 +131,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(label_upload)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
-                .addContainerGap(340, Short.MAX_VALUE))
+                .addContainerGap(383, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, 490));
@@ -268,6 +257,11 @@ public class MainFrame extends javax.swing.JFrame {
         txt_find.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         txt_find.setText("Search file");
         txt_find.setBorder(null);
+        txt_find.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_findMouseClicked(evt);
+            }
+        });
         txt_find.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_findActionPerformed(evt);
@@ -399,11 +393,6 @@ public class MainFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btn_update1ActionPerformed
 
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jLabel4MouseClicked
-
     private void txt_findKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_findKeyReleased
         // TODO add your handling code here:
        Controller con  = new Controller();
@@ -419,6 +408,11 @@ public class MainFrame extends javax.swing.JFrame {
         txt_find.setText("");
     }//GEN-LAST:event_txt_findActionPerformed
 
+    private void txt_findMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_findMouseClicked
+        // TODO add your handling code here:
+        txt_find.setText("");
+    }//GEN-LAST:event_txt_findMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_delete;
@@ -429,7 +423,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;

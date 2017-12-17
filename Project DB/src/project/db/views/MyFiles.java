@@ -7,13 +7,9 @@ package project.db.views;
 
 import java.awt.Color;
 import java.util.List;
-import javax.swing.JOptionPane;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
 import project.db.model.Archivo;
-import project.db.model.ConnectionOracle;
 import project.db.model.TMArchivo;
-import projectdb.controller.Controller;
+import project.db.controller.Controller;
 
 /**
  *
@@ -44,17 +40,18 @@ public class MyFiles extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        pnlReporte = new javax.swing.JPanel();
         btn_exit = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         table_file = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(34, 49, 63));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlReporte.setBackground(new java.awt.Color(34, 49, 63));
+        pnlReporte.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_exit.setBackground(new java.awt.Color(34, 49, 63));
         btn_exit.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
@@ -74,7 +71,7 @@ public class MyFiles extends javax.swing.JFrame {
                 btn_exitActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(613, 0, 50, 30));
+        pnlReporte.add(btn_exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(613, 0, 50, 30));
 
         table_file.setBackground(new java.awt.Color(34, 49, 63));
         table_file.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
@@ -92,22 +89,34 @@ public class MyFiles extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(table_file);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 640, 190));
+        pnlReporte.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 640, 190));
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("My Files");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, -1, -1));
+        pnlReporte.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, -1, -1));
+
+        jButton1.setBackground(new java.awt.Color(52, 152, 219));
+        jButton1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Reporte");
+        jButton1.setBorder(null);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        pnlReporte.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 310, 70, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlReporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
+            .addComponent(pnlReporte, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
         );
 
         pack();
@@ -129,12 +138,20 @@ public class MyFiles extends javax.swing.JFrame {
          btn_exit.setBackground(Color.red);
     }//GEN-LAST:event_btn_exitMouseEntered
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        Reporte rp = new Reporte();
+        rp.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_exit;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel pnlReporte;
     private javax.swing.JTable table_file;
     // End of variables declaration//GEN-END:variables
 }
