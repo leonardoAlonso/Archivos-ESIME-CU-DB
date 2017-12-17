@@ -7,6 +7,7 @@ package project.db.views;
 import java.util.List;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
 import projectdb.controller.Controller;
 import project.db.model.Archivo;
 import project.db.model.TMArchivo;
@@ -66,6 +67,7 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table_file = new javax.swing.JTable();
+        btn_download = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         txt_nombre = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
@@ -84,7 +86,7 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jTextField1 = new javax.swing.JTextField();
+        txt_find = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         label_user = new javax.swing.JLabel();
@@ -167,7 +169,14 @@ public class MainFrame extends javax.swing.JFrame {
         table_file.setGridColor(new java.awt.Color(52, 152, 219));
         jScrollPane1.setViewportView(table_file);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 670, 240));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 670, 190));
+
+        btn_download.setBackground(new java.awt.Color(52, 152, 219));
+        btn_download.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btn_download.setForeground(new java.awt.Color(255, 255, 255));
+        btn_download.setText("Download");
+        btn_download.setBorder(null);
+        jPanel2.add(btn_download, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 220, 90, 30));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 720, 260));
 
@@ -256,10 +265,20 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
         jPanel4.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 310, 10));
 
-        jTextField1.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jTextField1.setText("Search file");
-        jTextField1.setBorder(null);
-        jPanel4.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 310, 20));
+        txt_find.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        txt_find.setText("Search file");
+        txt_find.setBorder(null);
+        txt_find.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_findActionPerformed(evt);
+            }
+        });
+        txt_find.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_findKeyReleased(evt);
+            }
+        });
+        jPanel4.add(txt_find, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 310, 20));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Male_User_32px.png"))); // NOI18N
         jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 10, -1, -1));
@@ -385,9 +404,25 @@ public class MainFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jLabel4MouseClicked
 
+    private void txt_findKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_findKeyReleased
+        // TODO add your handling code here:
+       Controller con  = new Controller();
+       List<Archivo> archivo1;
+       archivo1 = con.find_Archivo(txt_find.getText());
+       modelo = new TMArchivo(archivo1);
+       table_file.setModel(modelo);
+        
+    }//GEN-LAST:event_txt_findKeyReleased
+
+    private void txt_findActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_findActionPerformed
+        // TODO add your handling code here:
+        txt_find.setText("");
+    }//GEN-LAST:event_txt_findActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_delete;
+    private javax.swing.JButton btn_download;
     private javax.swing.JButton btn_update1;
     private javax.swing.JComboBox combo_cobro;
     private javax.swing.JComboBox combo_pay;
@@ -408,11 +443,11 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel label_upload;
     private javax.swing.JLabel label_user;
     private javax.swing.JTable table_file;
     private javax.swing.JTextField txt_ape_pat;
+    private javax.swing.JTextField txt_find;
     private javax.swing.JTextField txt_mail;
     private javax.swing.JTextField txt_nombre;
     private javax.swing.JPasswordField txt_pass;

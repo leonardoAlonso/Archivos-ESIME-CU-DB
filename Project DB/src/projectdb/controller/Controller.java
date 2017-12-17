@@ -521,4 +521,47 @@ public class Controller {
                 System.out.println(e.getMessage());
         }	    
     }
+    
+    public List<Archivo> find_Archivo(String texto){
+        ArrayList<Archivo> a = new ArrayList();
+       ConnectionOracle con = new ConnectionOracle();
+       con.conect();
+       String  query = "SELECT * FROM ARCHIVO WHERE NOMBRE_ARCHIVO LIKE  "+"'%" + texto + "%'";
+       Statement st = null;
+       ResultSet rs = null;
+        int id = 0;
+        String nombre = null;
+        String formato = null;
+        double costo = 0;
+        double calificacion = 0;
+        int num_Descargas = 0;
+        int puntos = 0;
+        int alumno_id = 0;
+        int clase_id = 0;
+        String ruta = null;
+        String descripcion = null;
+       try{
+           st = con.conex.createStatement();
+           rs= st.executeQuery(query);
+           while(rs.next()){
+               id = rs.getInt("IDARCHIVO");
+               nombre = rs.getString("NOMBRE_ARCHIVO");
+               formato = rs.getString("FORMATO_ARCHIVO");
+               costo = rs.getDouble("COSTO");
+               calificacion = rs.getDouble("CALIFICACION");
+               num_Descargas = rs.getInt("NUM_DESCARGAS");
+               puntos = rs.getInt("PUNTAJE");
+               alumno_id = rs.getInt("ALUMNO_IDALUMNO");
+               clase_id = rs.getInt("CLASE_IDCLASE");
+               ruta = rs.getString("RUTA_ARCHIVO");
+               descripcion = rs.getString("DESCRPCION");
+               Archivo arr = new Archivo(id,nombre,formato,costo,calificacion,num_Descargas,puntos,alumno_id,clase_id,ruta,descripcion);
+                a.add(arr);
+           }
+       }catch(SQLException e){
+           System.out.println(e.getMessage());
+       }
+        
+        return a;
+    }
 }
