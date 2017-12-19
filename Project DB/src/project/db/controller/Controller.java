@@ -564,4 +564,114 @@ public class Controller {
         
         return a;
     }
+    public void downloadFile(int id_archivo){
+        ConnectionOracle con = new ConnectionOracle();	        
+        con.conect();	
+        /////////////////////////////// ULTIMO ID PARA AGREGARSELO A ALUMNO_OPERACION 
+        int last_id = 0;
+        String query = "SELECT MAX(ID_ALUMNO_OPERACION) FROM ALUMNO_OPERACION ";
+        Statement st = null;        
+        ResultSet rs = null;       
+        PreparedStatement ps = null;
+        System.out.println(last_id);
+        try{            
+            st = con.conex.createStatement(); 		            
+            rs = st.executeQuery(query);		            
+            if(rs.next()){		                
+                //System.out.println("ejecutado");		                
+                last_id =  rs.getInt("MAX(ID_ALUMNO_OPERACION)");
+                //System.out.println(last_id);            
+            }	        
+        }catch(SQLException e){           
+            System.out.println(e.getMessage());	        
+        }
+        last_id = last_id + 1;     
+        //System.out.println(last_id);
+        //////////////////////////////////////// TERMINA 
+        /////////////////////////////////////////// INSERTAR EL NUEVO ALUMNO_OPERACION 
+        query = " INSERT INTO ALUMNO_OPERACION VALUES(?,?,?,?)";
+        try{	            
+            ps = con.conex.prepareStatement(query);		           
+            ps.setInt(1,last_id);		            
+            ps.setInt(2, user_id);		            
+            ps.setInt(3, 2);		            
+            ps.setInt(4, id_archivo);
+            System.out.println("Insertado");
+        }catch(SQLException e){	            
+            System.out.println(e.getMessage());	        
+        }	  
+        ////////////////////////////////////////////// TERMINA
+        ////////////////////////////////////////////// AUMENTAR NUMERO DE DESCARGAS EN 1
+        int numero_download = 0;
+        query = " SELECT NUM_DESCARGAS FROM ARCHIVO WHERE IDARCHIVO = " + id_archivo; // NECESITO EL ID DEL ARCHIVO QUE QUIERE DESCARGAR
+        try{            
+            st = con.conex.createStatement(); 		            
+            rs = st.executeQuery(query);		            
+            if(rs.next()){		
+                //System.out.println("ejecutado");
+                numero_download =  rs.getInt("NUM_DESCARGAS");
+                //System.out.println(numero_dowload);
+            }
+        }catch(SQLException e){
+            System.out.println(e.getMessage());	        
+        }
+        numero_download = numero_download + 1;
+        query = " UPDATE ARCHIVO SET NUM_DESCARGAS = ? WHERE IDARCHIVO = " + id_archivo; // NECESITO EL ID DEL ARCHIVO QUE QUIERE DESCARGAR
+        try{	            
+            ps = con.conex.prepareStatement(query);		           
+            ps.setInt(1,numero_download);
+            ps.execute();		             
+            con.disconect();	
+        }catch(SQLException e){	            
+            System.out.println(e.getMessage());	        
+        }
+        //////////////////////////////// TERMINA
+    }
+    public int getFileId(String name){
+        int id = 0;
+        String query = "SELECT IDARCHIVO FROM ARCHIVO WHERE NOMBRE_ARCHIVO LIKE '%" + name + "%'";
+        Statement st = null;
+        ResultSet rs = null;
+        ConnectionOracle con = new ConnectionOracle();
+        con.conect();
+        try{
+            st = con.conex.createStatement();
+            rs = st.executeQuery(query);
+            if(rs.next()){
+                id = rs.getInt("IDARCHIVO");
+            }
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }
+        con.disconect();
+        return id;
+    }
+    public void puntuar(String name){
+        int puntos = 0;
+        int id = 0;
+        String query = "SELECT IDARCHIVO, PUNTAJE FROM ARCHIVO WHERE NOMBRE_ARCHIVO LIKE '%" + name + "%'";
+        Statement st = null;
+        ResultSet rs = null;
+        ConnectionOracle con = new ConnectionOracle();
+        con.conect();
+        try{
+            st = con.conex.createStatement();
+            rs = st.executeQuery(query);
+            if(rs.next()){
+                puntos = rs.getInt("PUNTAJE");
+                id = rs.getInt("IDARCHIVO");
+            }
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }
+        puntos += 1;
+        query = "UPDATE ARCHIVO SET PUNTAJE = "+ puntos + "WHERE ALUMNO_IDALUMNO LIKE " + user_id + "AND IDARCHIVO LIKE " + id;
+        try{
+            st = con.conex.createStatement();
+            st.executeUpdate(query);
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }
+        con.disconect();
+    }
 }

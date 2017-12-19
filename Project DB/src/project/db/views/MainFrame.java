@@ -67,6 +67,7 @@ public class MainFrame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         table_file = new javax.swing.JTable();
         btn_download = new javax.swing.JButton();
+        btn_puntuar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         txt_nombre = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
@@ -165,7 +166,24 @@ public class MainFrame extends javax.swing.JFrame {
         btn_download.setForeground(new java.awt.Color(255, 255, 255));
         btn_download.setText("Download");
         btn_download.setBorder(null);
-        jPanel2.add(btn_download, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 220, 90, 30));
+        btn_download.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_downloadActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btn_download, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 220, 90, 30));
+
+        btn_puntuar.setBackground(new java.awt.Color(52, 152, 219));
+        btn_puntuar.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btn_puntuar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_puntuar.setText("Puntuar");
+        btn_puntuar.setBorder(null);
+        btn_puntuar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_puntuarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btn_puntuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 220, 90, 30));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 720, 260));
 
@@ -413,10 +431,33 @@ public class MainFrame extends javax.swing.JFrame {
         txt_find.setText("");
     }//GEN-LAST:event_txt_findMouseClicked
 
+    private void btn_downloadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_downloadActionPerformed
+        // TODO add your handling code here:
+        TableModel tableModel = table_file.getModel();
+        String nombre = (String) tableModel.getValueAt(0,1);
+        System.out.println(nombre);
+        Controller con = new Controller();
+        int id = con.getFileId(nombre);
+        con.downloadFile(id);
+        JOptionPane.showMessageDialog(null, "Archivo descargado correctamente");
+        
+    }//GEN-LAST:event_btn_downloadActionPerformed
+
+    private void btn_puntuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_puntuarActionPerformed
+        // TODO add your handling code here:
+        TableModel tableModel = table_file.getModel();
+        String nombre = (String) tableModel.getValueAt(0,1);
+        System.out.println(nombre);
+        Controller con = new Controller();
+        con.puntuar(nombre);
+        JOptionPane.showMessageDialog(null, "Gracias por puntuar a: " + nombre);
+    }//GEN-LAST:event_btn_puntuarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_delete;
     private javax.swing.JButton btn_download;
+    private javax.swing.JButton btn_puntuar;
     private javax.swing.JButton btn_update1;
     private javax.swing.JComboBox combo_cobro;
     private javax.swing.JComboBox combo_pay;

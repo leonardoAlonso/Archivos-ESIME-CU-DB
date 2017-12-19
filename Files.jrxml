@@ -47,7 +47,7 @@
 		</band>
 	</title>
 	<columnHeader>
-		<band height="31" splitType="Stretch">
+		<band height="35" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="0" width="95" height="30" uuid="3b2c5b7e-ceb7-46ea-96aa-e9144f2894a6">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7913943b-e58d-4eac-a079-00b9796dcd87"/>
@@ -110,6 +110,12 @@
 				<reportElement x="0" y="0" width="95" height="30" uuid="ed8137c1-54d5-4ae8-a802-d53e37d9eb5c">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7913943b-e58d-4eac-a079-00b9796dcd87"/>
 				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Century Gothic"/>
 				</textElement>
@@ -119,6 +125,12 @@
 				<reportElement x="95" y="0" width="92" height="30" uuid="5ee45249-2e74-40f6-9d59-f4568d9ee9b8">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="544786b8-ee00-40b7-aa17-9beadeace2c7"/>
 				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Century Gothic"/>
 				</textElement>
@@ -128,6 +140,12 @@
 				<reportElement x="187" y="0" width="92" height="30" uuid="5f7dcf83-17ef-4cb6-9fb9-7875c664df16">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a55bdcd3-6b6f-4e99-89cc-53d3e53b8c2c"/>
 				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Century Gothic"/>
 				</textElement>
@@ -137,6 +155,12 @@
 				<reportElement x="279" y="0" width="92" height="30" uuid="04002e66-fd8d-4781-b521-01e51809d395">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b692c4a8-98d9-4cd3-9949-c8d351fac2fc"/>
 				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Century Gothic"/>
 				</textElement>
@@ -146,6 +170,12 @@
 				<reportElement x="371" y="0" width="92" height="30" uuid="f460021e-f7e5-477d-9910-7c75bec076e6">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="81733bb7-a099-4cb1-bb48-12b254c8f36b"/>
 				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Century Gothic"/>
 				</textElement>
@@ -155,6 +185,12 @@
 				<reportElement x="463" y="0" width="92" height="30" uuid="34921fb6-f40c-4500-a184-11723538e5ba">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="03051efd-330c-4f26-b125-f12175f54caa"/>
 				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Century Gothic"/>
 				</textElement>
@@ -163,10 +199,10 @@
 		</band>
 	</detail>
 	<summary>
-		<band height="252" splitType="Stretch">
+		<band height="320" splitType="Stretch">
 			<pie3DChart>
 				<chart evaluationTime="Report">
-					<reportElement x="30" y="7" width="200" height="200" uuid="166670bf-bf8c-4108-bee0-da7d0449a185"/>
+					<reportElement x="30" y="70" width="200" height="200" uuid="166670bf-bf8c-4108-bee0-da7d0449a185"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>
@@ -183,7 +219,7 @@
 			</pie3DChart>
 			<pie3DChart>
 				<chart evaluationTime="Report">
-					<reportElement x="345" y="7" width="200" height="200" uuid="4dd8b38b-23a5-4df6-a48a-f89ba5d801c1"/>
+					<reportElement x="344" y="70" width="200" height="200" uuid="4dd8b38b-23a5-4df6-a48a-f89ba5d801c1"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>
@@ -198,6 +234,24 @@
 					<itemLabel/>
 				</pie3DPlot>
 			</pie3DChart>
+			<staticText>
+				<reportElement x="95" y="32" width="92" height="30" uuid="0762cd69-1dbf-426a-838f-584bd17660cc">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="81733bb7-a099-4cb1-bb48-12b254c8f36b"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic"/>
+				</textElement>
+				<text><![CDATA[NUM_DESCARGAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="32" width="92" height="30" uuid="2aa7f1ce-050e-463f-a3f9-79bfecc02bd0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="03051efd-330c-4f26-b125-f12175f54caa"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic"/>
+				</textElement>
+				<text><![CDATA[PUNTAJE]]></text>
+			</staticText>
 		</band>
 	</summary>
 </jasperReport>

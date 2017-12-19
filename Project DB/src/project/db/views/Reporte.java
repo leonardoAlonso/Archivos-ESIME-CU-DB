@@ -6,6 +6,7 @@
 package project.db.views;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
 import net.sf.jasperreports.engine.JRException;
